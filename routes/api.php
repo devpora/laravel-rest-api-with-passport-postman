@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +12,23 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+Route::middleware(['cors', 'json.response'])->namespace('App\Http\Controllers')->group(function () {
+    // Routes for unauthenticated user
+    Route::get('today', 'CalendarController@today');
+    Route::group(['prefix' => 'auth'], function () {
+        //Login
+        Route::post('login', 'AuthController@login');
+        //Register
+        Route::post('register', 'AuthController@register');
+    });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    // Routes for authenticated user
+    Route::middleware('auth:api')->group(function () {
+        Route::group(['prefix' => 'auth'], function () {
+            Route::post('logout', 'AuthController@logout');
+        });
+
+        Route::get('today_auth', 'CalendarController@todayAuth');
+        Route::get('me', 'UserController@me');
+    });
 });

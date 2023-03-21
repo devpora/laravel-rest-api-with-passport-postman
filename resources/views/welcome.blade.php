@@ -50,6 +50,15 @@
             text-decoration: none;
             text-transform: uppercase;
         }
+        .links > span {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
         .m-b-md {
             margin-bottom: 30px;
         }
@@ -74,6 +83,9 @@
         <div class="links">
             <a href="/404">404</a>
             <a href="/exception">Exception</a>
+            <span class="postman">Postman:</span>
+            <a href="{{url('postman_env')}}" class="download">(env)</a>
+            <a href="{{url('postman_col')}}" class="download">(col)</a>
         </div>
     </div>
 </div>
