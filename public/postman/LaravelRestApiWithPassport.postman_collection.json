@@ -122,6 +122,499 @@
 			]
 		},
 		{
+			"name": "oAuth",
+			"item": [
+				{
+					"name": "Login Google",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oAuthCode",
+									"value": "CHANGE",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "google",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/oauth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"oauth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login GitHub",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oAuthCode",
+									"value": "CHANGE",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "github",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/oauth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"oauth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login GitLab",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oAuthCode",
+									"value": "CHANGE",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "gitlab",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/oauth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"oauth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TEST - Providers",
+			"item": [
+				{
+					"name": "GitHub",
+					"item": [
+						{
+							"name": "Get Access Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "code",
+											"value": "ADD_CODE_FROM_FRONTEND",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{OAUTH_GITHUB_CLIENT_ID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{OAUTH_GITHUB_CLIENT_SECRET}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://github.com/login/oauth/access_token",
+									"protocol": "https",
+									"host": [
+										"github",
+										"com"
+									],
+									"path": [
+										"login",
+										"oauth",
+										"access_token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Data",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer ADD_TOKEN_FROM_PREVIOUS_RESPONSE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.github.com/user",
+									"protocol": "https",
+									"host": [
+										"api",
+										"github",
+										"com"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Emails",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer ADD_TOKEN_FROM_PREVIOUS_RESPONSE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://api.github.com/user/emails",
+									"protocol": "https",
+									"host": [
+										"api",
+										"github",
+										"com"
+									],
+									"path": [
+										"user",
+										"emails"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GitLab",
+					"item": [
+						{
+							"name": "Get Access Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "code",
+											"value": "ADD_CODE_FROM_FRONTEND",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{OAUTH_GITLAB_CLIENT_ID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{OAUTH_GITLAB_CLIENT_SECRET}}",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "{{OAUTH_REDIRECT_URI}}gitlab",
+											"type": "text"
+										},
+										{
+											"key": "code_verifier",
+											"value": "{{OAUTH_GITLAB_CODE_VERIFIER}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://gitlab.com/oauth/token",
+									"protocol": "https",
+									"host": [
+										"gitlab",
+										"com"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Data",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "ADD_TOKEN_FROM_PREVIOUS_RESPONSE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "https://gitlab.com/api/v4/user",
+									"protocol": "https",
+									"host": [
+										"gitlab",
+										"com"
+									],
+									"path": [
+										"api",
+										"v4",
+										"user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Google",
+					"item": [
+						{
+							"name": "Get Access Token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "code",
+											"value": "ADD_CODE_FROM_FRONTEND",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{OAUTH_GOOGLE_CLIENT_ID}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{OAUTH_GOOGLE_CLIENT_SECRET}}",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "{{OAUTH_REDIRECT_URI}}google",
+											"type": "text"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://oauth2.googleapis.com/token",
+									"protocol": "https",
+									"host": [
+										"oauth2",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Data",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer ADD_TOKEN_FROM_PREVIOUS_RESPONSE",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "access_token",
+											"value": "ADD_TOKEN_FROM_PREVIOUS_RESPONSE",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://www.googleapis.com/oauth2/v3/tokeninfo",
+									"protocol": "https",
+									"host": [
+										"www",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"oauth2",
+										"v3",
+										"tokeninfo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Today",
 			"request": {
 				"method": "GET",

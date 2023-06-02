@@ -36,20 +36,36 @@ php artisan serve # - start development server on http://localhost:8000
 ```
 
 ## Changes
-- Added seeder to create default user
-- Added laravel/passport package for authentication
-- Added functions for login/register/logout with input validation
-- Added routes for test authorized/unauthorized access
-- Added data for simple testing via Postman (collection and environment)
+- Added oAuth login for Google, GitHub, GitLab
 
 ## Release notes
+- v004 - add oAuth
 - v003 - add auth
 - v002 - add json response
 - v001 - add Laravel 10
 
 ## Other:
+### Documentation:
 [Laravel 10 documentation](https://laravel.com/docs/10.x)
 [Passport documentation](https://laravel.com/docs/10.x/passport)
+
+### Data:
+[Google](https://console.cloud.google.com)
+[GitHub](https://github.com/settings/apps)
+[GitLab](https://gitlab.com/profile/applications)
+
+# How create ClientId a ClientSecret
+Google:
+- Where: Navigation Menu->APIs & Services->OAuth (https://console.cloud.google.com/apis/credentials)
+- How: Create Credentials->oAuth Client ID: Type Web, Redirect URI: URL/oauth/callback/google
+-
+GitHub:
+- Where: Settings->Developer settings->oAuth (https://github.com/settings/apps)
+- How: Callback url: URL/oauth/callback/github
+
+GitLab:
+- Where: Preferences->Application (https://gitlab.com/-/profile/applications)
+- How: Redirect uri: URL/oauth/callback/gitlab Scopes: read_user
 
 
 ---
@@ -79,17 +95,33 @@ php artisan serve # - spustenie servera na http://localhost:8000
 ```
 
 ## Zmeny
-- Pridaný seeder na vytvorenie defaultného používateľa
-- Pridaný balík laravel/passport na autentifikáciu
-- Pridané funkcie na login/register/logout s validáciou vstupu
-- Pridané cesty na testovanie autorizovaného/neautorizovaného prístupu
-- Pridané dáta na jednoduché testovanie cez Postman (collection a environment)
+- Pridaná podpora pre oAuth cez Google, GitHub, GitLab
 
 ## Poznámky k vydaniu
+- v004 - pridané prihlasovanie cez oAuth
 - v003 - pridaná podpora autentifikácie
 - v002 - pridaný json response
 - v001 - pridaný Laravel 10
 
 ## Ostatné:
+### Dokumentácia:
 [Laravel 10 dokumentácia](https://laravel.com/docs/10.x)
 [Passport dokumentácia](https://laravel.com/docs/10.x/passport)
+
+### Dáta:
+[Google](https://console.cloud.google.com)
+[GitHub](https://github.com/settings/apps)
+[GitLab](https://gitlab.com/profile/applications)
+
+# Ako vytvoriť ClientId a ClientSecret
+Google:
+- Kde: Navigation Menu->APIs & Services->OAuth (https://console.cloud.google.com/apis/credentials)
+- Ako: Create Credentials->oAuth Client ID: Type Web, Redirect URI: URL/oauth/callback/google
+
+GitHub:
+- Kde: Settings->Developer settings->oAuth (https://github.com/settings/apps)
+- Ako: Callback url: URL/oauth/callback/github
+
+GitLab:
+- Kde: Preferences->Application (https://gitlab.com/-/profile/applications)
+- Ako: Redirect uri: URL/oauth/callback/gitlab Scopes: read_user

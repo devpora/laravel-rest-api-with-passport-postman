@@ -17,9 +17,12 @@ Route::middleware(['cors', 'json.response'])->namespace('App\Http\Controllers')-
     Route::get('today', 'CalendarController@today');
     Route::group(['prefix' => 'auth'], function () {
         //Login
-        Route::post('login', 'AuthController@login');
+        Route::post('login','AuthController@login');
         //Register
         Route::post('register', 'AuthController@register');
+    });
+    Route::group(['prefix' => 'oauth'], function () {
+        Route::post('login', 'OAuthController@login');
     });
 
     // Routes for authenticated user
