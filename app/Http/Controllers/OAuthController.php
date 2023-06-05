@@ -15,8 +15,6 @@ class OAuthController extends Controller
     public $provider;
     public $oAuthCode;
 
-    public const OAUTH_BASIC_CALLBACK_URL = 'http://localhost:3000/oauth/callback/';
-
     public const PROVIDER_GOOGLE_NAME = 'google';
     public const PROVIDER_GOOGLE_GET_TOKEN_URL = 'https://oauth2.googleapis.com/token';
     public const PROVIDER_GOOGLE_CHECK_TOKEN_URL = 'https://www.googleapis.com/oauth2/v3/tokeninfo';
@@ -331,12 +329,13 @@ class OAuthController extends Controller
 
     public function getOAuthData(){
         $data = null;
+        $callbackUrl = env('APP_URL') . '/oauth/callback/';
         if($this->provider === self::PROVIDER_GOOGLE_NAME){
             $data = [
                 "code"=> $this->oAuthCode,
                 "client_id"=> env('OAUTH_GOOGLE_CLIENT_ID'),
                 "client_secret"=> env('OAUTH_GOOGLE_CLIENT_SECRET'),
-                "redirect_uri"=> self::OAUTH_BASIC_CALLBACK_URL . $this->provider,
+                "redirect_uri"=> $callbackUrl . $this->provider,
                 "grant_type"=> "authorization_code",
             ];
         }elseif($this->provider === self::PROVIDER_GITHUB_NAME){
@@ -350,7 +349,7 @@ class OAuthController extends Controller
                 "code"=> $this->oAuthCode,
                 "client_id"=> env('OAUTH_GITLAB_CLIENT_ID'),
                 "client_secret"=> env('OAUTH_GITLAB_CLIENT_SECRET'),
-                "redirect_uri"=> self::OAUTH_BASIC_CALLBACK_URL . $this->provider,
+                "redirect_uri"=> $callbackUrl . $this->provider,
                 "grant_type"=> "authorization_code",
                 "code_verifier"=> env("OAUTH_GITLAB_CODE_VERIFIER"),
             ];
